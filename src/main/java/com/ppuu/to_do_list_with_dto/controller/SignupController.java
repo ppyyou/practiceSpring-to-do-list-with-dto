@@ -1,6 +1,6 @@
 package com.ppuu.to_do_list_with_dto.controller;
 
-import com.ppuu.to_do_list_with_dto.dto.SignupDTO;
+import com.ppuu.to_do_list_with_dto.dto.SignupDto;
 import com.ppuu.to_do_list_with_dto.model.User;
 import com.ppuu.to_do_list_with_dto.repository.UserRepository;
 import jakarta.validation.Valid;
@@ -19,14 +19,14 @@ public class SignupController {
 
     @GetMapping("/signup")
     public String showSignup(Model model) {
-        model.addAttribute("signupDto", new SignupDTO());
+        model.addAttribute("signupDto", new SignupDto());
 
         return "signup";
     }
 
     @PostMapping("/signup")
     public String doSignup(
-            @Valid @ModelAttribute("signupDto") SignupDTO signupDTO, // 왜 ("signupDtp") 넣어 줘야 if 문이 제대로 작동하는가??
+            @Valid @ModelAttribute("signupDto") SignupDto signupDTO, // 왜 ("signupDtp") 넣어 줘야 if 문이 제대로 작동하는가??
             BindingResult bindingResult,
             Model model
     ) {
