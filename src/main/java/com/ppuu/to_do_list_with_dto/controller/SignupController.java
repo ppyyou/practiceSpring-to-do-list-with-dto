@@ -34,7 +34,11 @@ public class SignupController {
             return "signup";
         }
 
-        // 체크해야 하는 것: 중복 가입 여부
+        if (userRepository.findByUsername(signupDTO.getUsername()) != null) {
+            model.addAttribute("error", "이미 사용 중인 아이디입니다.");
+
+            return "signup";
+        }
 
         User user = User.builder()
                 .username(signupDTO.getUsername())
